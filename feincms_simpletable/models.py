@@ -56,8 +56,12 @@ class SimpleTable(models.Model):
             for i,v in enumerate(tbody_rows):
                 tbody_rows[i] = tbody_rows[i].split('\t')
 
-            self.specification_html = render_to_string(
-                'content/simpletable/default.html', {
+            table_type = getattr(self, 'type', 'default')
+
+            self.specification_html = render_to_string([
+                    'content/simpletable/%s.html' % table_type,
+                    'content/simpletable/default.html',
+                ], {
                     'tbody_rows': tbody_rows,
                     'thead_cols': thead_cols,
                     },
@@ -89,3 +93,31 @@ class SimpleTableContent(SimpleTable):
 
     def render(self, **kwargs):
         return self.specification_html
+
+    @classmethod
+    def initialize_type(cls, cleanse=None, TYPE_CHOICES=None):
+        def to_instance_method(func):
+            def func_im(self, *args, **kwargs):
+                return func(*args, **kwargs)
+            return func_im
+
+        if TYPE_CHOICES is None:
+            cls.add_to_class(
+                'type',
+                models.CharField(
+                    _('type'),
+                    max_length=20,
+                    choices=TYPE_CHOICES,
+                    default='default',
+                )
+            )
+        else:
+            cls.add_to_class(
+                'type',
+                models.CharField(
+                    _('type'),
+                    max_length=20,
+                    choices=TYPE_CHOICES,
+                    default=TYPE_CHOICES[0][0],
+                )
+            )

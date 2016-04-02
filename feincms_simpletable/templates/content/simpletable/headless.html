@@ -1,14 +1,13 @@
 {% spaceless %}
 <table class="table">
-	<thead>
-	<tr>
-		{% for col in thead_cols %}
-		<th>{{ col }}</th>
-		{% endfor %}
-	</tr>
-	</thead>
-
 	<tbody>
+
+	<tr>
+	{% for col in thead_cols %}
+		<td>{{ col }}</td>
+	{% endfor %}
+	</tr>
+
 	{% for row in tbody_rows %}
 		<tr>
 		{% for col in row %}

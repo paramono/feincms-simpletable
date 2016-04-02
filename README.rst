@@ -26,6 +26,25 @@ Quick start
     # ...
     Page.create_content_type(SimpleTableContent)
 
+    # tables will be rendered as
+    # templates/content/feincms_simpletable/default.html
+
+3. (optional) It is possible to define TYPE_CHOICES for SimpleTableContent if you want to 
+   render tables using different templates::
+
+    from feincms_simpletable.models import SimpleTableContent
+    # ...
+    Page.create_content_type(SimpleTableContent, TYPE_CHOICES=(
+            ('default', 'default template'),
+            ('headless', 'with td instead of th for first row'),
+            # ... (other types)
+        )
+    )
+    
+    # tables will be rendered as either of these, depending on admin choice:
+    # templates/content/feincms_simpletable/default.html
+    # templates/content/feincms_simpletable/headless.html
+    # ...
 
 3. If you want to add SimpleTable fields to your existing models, simply 
    subclass it::
