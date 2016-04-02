@@ -17,7 +17,7 @@ setup(
     license='BSD License',  
     description='Table content type for feincms: copy-paste cells from spreadsheets to admin, get them displayed as html table on your website',
     long_description=README,
-    url='https://github.com/paramono/feincms-simpletable',
+    url='https://github.com/paramono/feincms_simpletable',
     author='Alexander Paramonov',
     author_email='alex@paramono.com',
     classifiers=[

@@ -1,9 +1,9 @@
-# feincms-simpletable
+# feincms_simpletable
 # Table content type for feincms: copy-paste cells from spreadsheets to admin, 
 # get them displayed as html table on your website 
 
 # Copyright (C) Alexander Paramonov
-# This file is distributed under the same license as the feincms-simpletable package.
+# This file is distributed under the same license as the feincms_simpletable package.
 # Alexander Paramonov <alex@paramono.com>, 2016.
 
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "POT-Creation-Date: 2016-04-02 14:43+0300\n"
 "PO-Revision-Date: 2016-04-02 14:37+0300\n"
 "Last-Translator: Alexander Paramonov <alex@paramono.com>\n"
-"Language-Team: Russian <https://github.com/paramono/feincms-simpletable>\n"
+"Language-Team: Russian <https://github.com/paramono/feincms_simpletable>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

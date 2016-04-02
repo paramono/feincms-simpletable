@@ -1,8 +1,8 @@
 ===================
-feincms-simpletable
+feincms_simpletable
 ===================
 
-feincms-simpletable is a feincms plugin that adds a new content type for 
+feincms_simpletable is a feincms plugin that adds a new content type for 
 tables. Just copy-paste your data from Calc or Office spreadsheet into
 SimpleTableContent in admin, and it will be automatically converted
 to html and rendered as such on your website
@@ -12,11 +12,11 @@ to html and rendered as such on your website
 Quick start
 -----------
 
-1. Add "feincms-simpletable" to your INSTALLED_APPS setting like this::
+1. Add "feincms_simpletable" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = (
         ...
-        'feincms-simpletable',
+        'feincms_simpletable',
     )
 
 2. If you intend to use it as feincms content type, register SimpleTableContent 
