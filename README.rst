@@ -46,13 +46,13 @@ Quick start
     # templates/content/feincms_simpletable/headless.html
     # ...
 
-3. If you want to add SimpleTable fields to your existing models, simply 
+4. If you want to add SimpleTable fields to your existing models, simply 
    subclass it::
 
     class Product(Base, SimpleTable):
         # ...
 
-3. Migrate your models
+5. Migrate your models
 
 Usage
 -----
