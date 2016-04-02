@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 from setuptools import setup
 
@@ -8,9 +10,9 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='feincms-simpletable',
+    name='feincms_simpletable',
     version='0.1',
-    packages=['feincms-simpletable'],
+    packages=['feincms_simpletable'],
     include_package_data=True,
     license='BSD License',  
     description='Table content type for feincms: copy-paste cells from spreadsheets to admin, get them displayed as html table on your website',
