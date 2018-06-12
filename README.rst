@@ -36,14 +36,14 @@ Quick start
     # ...
     Page.create_content_type(SimpleTableContent, TYPE_CHOICES=(
             ('default', 'default template'),
-            ('headless', 'with td instead of th for first row'),
+            ('other', 'some other template'),
             # ... (other types)
         )
     )
     
     # tables will be rendered as either of these, depending on admin choice:
     # templates/content/feincms_simpletable/default.html
-    # templates/content/feincms_simpletable/headless.html
+    # templates/content/feincms_simpletable/other.html
     # ...
 
 4. If you want to add SimpleTable fields to your existing models, simply 

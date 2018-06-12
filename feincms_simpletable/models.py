@@ -19,7 +19,10 @@ class SimpleTable(models.Model):
 
     specification_csv = models.TextField(
         _('Spreadsheet data'), # 'Текст таблицы из Excel',
-        help_text=_('Paste your spreadsheet data here') ,
+        help_text=_(
+            'Paste your spreadsheet data from Excel or Calc here'
+            ' (Word not supported)'
+            ) ,
         # 'Сюда вставить таблицу из Excel (Ctrl-C, Ctrl-V)',
         # verbose_name=_('Simple Table'),
         blank=True, 
@@ -33,6 +36,39 @@ class SimpleTable(models.Model):
         blank=True,
         null=True,
         )
+    table_headless = models.BooleanField(
+        _('Headless?'),
+        help_text=_('Displays first row as ordinary row'),
+        default=False,
+    )
+    table_bordered = models.BooleanField(
+        _('Bordered?'),
+        help_text=_('Display border on all sides of the table and cells'),
+        default=False,
+    )
+
+    table_striped = models.BooleanField(
+        _('Striped?'),
+        help_text=_('Add zebra-striping'),
+        default=False,
+    )
+    table_hover = models.BooleanField(
+        _('Highlight on hover?'),
+        default=False,
+    )
+    table_responsive = models.BooleanField(
+        _('Responsive?'),
+        help_text=_(
+            'Displays better on mobile devices, '
+            'displays as usual on big screens'
+            ),
+        default=True,
+    )
+    table_condensed = models.BooleanField(
+        _('Condensed?'),
+        help_text=_('Makes table more compact in size'),
+        default=False,
+    )
 
     class Meta:
         abstract = True
@@ -62,9 +98,16 @@ class SimpleTable(models.Model):
                     'content/simpletable/%s.html' % table_type,
                     'content/simpletable/default.html',
                 ], {
+                    'table': self,
                     'tbody_rows': tbody_rows,
                     'thead_cols': thead_cols,
-                    },
+                    'table_headless':   self.table_headless,
+                    'table_striped':    self.table_striped,
+                    'table_bordered':    self.table_bordered,
+                    'table_hover':      self.table_hover,
+                    'table_responsive': self.table_responsive,
+                    'table_condensed':  self.table_condensed,
+                },
                 context_instance=kwargs.get('context')
                 )
 
@@ -95,7 +138,8 @@ class SimpleTableContent(SimpleTable):
         return self.specification_html
 
     @classmethod
-    def initialize_type(cls, cleanse=None, TYPE_CHOICES=None):
+    def initialize_type(cls, cleanse=None, TYPE_CHOICES=None, **kwargs):
+
         def to_instance_method(func):
             def func_im(self, *args, **kwargs):
                 return func(*args, **kwargs)
@@ -121,3 +165,4 @@ class SimpleTableContent(SimpleTable):
                     default=TYPE_CHOICES[0][0],
                 )
             )
+
